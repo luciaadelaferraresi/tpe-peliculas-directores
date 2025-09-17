@@ -1,8 +1,8 @@
 # TPE - Películas y Géneros
 
 ## Integrantes
-- Ferraresi, Lucía Adela – luciaferraresi30@gmail.com
-- Thomassen Carretero, Jean Lucas – [email pendiente]
+- Ferraresi Lucía Adela – luciaferraresi30@gmail.com
+- Thomassen Carretero Jean Lucas – jeanthomassen.04@gmail.com
 
 ## Temática
 Películas y Géneros
