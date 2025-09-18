@@ -21,4 +21,4 @@ El archivo SQL exportado se encuentra en [cine.sql](cine.sql) y crea las tablas:
 
 - `Película`  
 - `Director`
-La relación es de 1 a N, cada película tiene un director.
+- La relación es de 1 a N, cada película tiene un director.
