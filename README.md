@@ -17,7 +17,7 @@ Se incluye el archivo [DER.jpeg](DER.jpeg) que representa las entidades "Pelícu
 - Una película pertenece a un solo director.
 
 ## SQL
-El archivo SQL exportado se encuentra en [modelo.sql](modelo.sql) y crea las tablas:
+El archivo SQL exportado se encuentra en [cine.sql](cine.sql) y crea las tablas:
 
 - `Película`  
 - `Director`
