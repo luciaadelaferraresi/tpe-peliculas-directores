@@ -5,8 +5,8 @@ class ListaModel extends modelBase{
     public function GetPeliculas() {
         $query = $this->db->prepare("
         SELECT p.id, p.titulo, p.anio, d.nombre AS director
-        FROM pelicula p
-        JOIN director d ON p.id_director = d.id
+        FROM peliculas p
+        JOIN directores d ON p.id_director = d.id
          ");
         $query->execute();
 
@@ -17,8 +17,8 @@ class ListaModel extends modelBase{
     public function GetPeliculasDestacadas(){
         $query = $this->db->prepare("
         SELECT p.id, p.titulo, p.anio, p.duracion, d.nombre AS director
-        FROM pelicula p
-        JOIN director d ON p.id_director = d.id
+        FROM peliculas p
+        JOIN directores d ON p.id_director = d.id
         ORDER BY p.id DESC
         LIMIT 5
     ");
@@ -31,8 +31,8 @@ class ListaModel extends modelBase{
     public function GetPelicula($id) {
         $query = $this->db->prepare("
         SELECT p.*, d.nombre AS director
-        FROM pelicula p
-        JOIN director d ON p.id_director = d.id
+        FROM peliculas p
+        JOIN directores d ON p.id_director = d.id
         WHERE p.id = ?
          ");
         $query->execute([$id]);
@@ -41,16 +41,16 @@ class ListaModel extends modelBase{
 
         return $pelicula;
     }
-    public function InsertPelicula($titulo, $anio, $director) {
-        $query = $this->db->prepare('INSERT INTO pelicula (titulo, anio, director) VALUES (?, ?, ?)');
-        $query->execute([$titulo, $anio, $director]);
+    public function InsertPelicula($titulo, $anio, $duracion, $id_director) {
+        $query = $this->db->prepare('INSERT INTO peliculas (titulo, anio, duracion, id_director) VALUES (?, ?,?,?)');
+        $query->execute([$titulo, $anio, $duracion, $id_director]);
     }
     public function updatePelicula($id, $titulo, $anio) {
-        $query = $this->db->prepare('UPDATE pelicula SET titulo=?, anio=? WHERE id=?');
+        $query = $this->db->prepare('UPDATE peliculas SET titulo=?, anio=?  WHERE id=?');
         $query->execute([$titulo, $anio, $id]);
     }
     public function deletePelicula($id) {
-        $query = $this->db->prepare('DELETE FROM pelicula WHERE id=?');
+        $query = $this->db->prepare('DELETE FROM peliculas WHERE id=?');
         $query->execute([$id]);
     }
     

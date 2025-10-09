@@ -37,15 +37,15 @@ class PeliculaController{
             return $this->view->showError('Falta completar el año');
         }
 
-       if (!isset($_POST['director']) || empty($_POST['director'])) {
-        return $this->view->showError('Falta seleccionar un director');
-    }
+    
 
         $titulo = $_POST['titulo'];
        $anio = $_POST['anio'];
-    $director = $_POST['director'];
+       $duracion = $_POST['duracion'];       
+       $id_director = $_POST['director']??1;  
+       
 
-        $this->model->InsertPelicula($titulo, $anio, $director);
+        $this->model->InsertPelicula($titulo, $anio, $duracion, $id_director);
          header("Location: " . BASE_URL . "peliculas");
          exit();
     }

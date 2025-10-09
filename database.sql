@@ -10,13 +10,13 @@ CREATE DATABASE IF NOT EXISTS `cine` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8m
 USE `cine`;
 
 
-CREATE TABLE IF NOT EXISTS `director` (
+CREATE TABLE IF NOT EXISTS `directores` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
-INSERT INTO `director` (`id`, `nombre`) VALUES
+INSERT INTO `directores` (`id`, `nombre`) VALUES
 (1, 'Steven Spielberg'),
 (2, 'Christopher Nolan'),
 (3, 'Quentin Tarantino'),
@@ -24,7 +24,7 @@ INSERT INTO `director` (`id`, `nombre`) VALUES
 (5, 'James Cameron');
 
 
-CREATE TABLE IF NOT EXISTS `pelicula` (
+CREATE TABLE IF NOT EXISTS `peliculas` (
   `id` int(11) NOT NULL,
   `titulo` varchar(100) NOT NULL,
   `duracion` int(11) NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `pelicula` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
-INSERT INTO `pelicula` (`id`, `titulo`, `duracion`, `anio`, `id_director`) VALUES
+INSERT INTO `peliculas` (`id`, `titulo`, `duracion`, `anio`, `id_director`) VALUES
 (1, 'Jurassic Park', 127, 1993, 1),
 (2, 'Inception', 148, 2010, 2),
 (3, 'Pulp Fiction', 154, 1994, 3),
@@ -59,10 +59,10 @@ INSERT INTO `usuarios` (`id`, `email`, `password`, `rol`) VALUES
 
 
 
-ALTER TABLE `director`
+ALTER TABLE `directores`
   ADD PRIMARY KEY (`id`);
 
-ALTER TABLE `pelicula`
+ALTER TABLE `peliculas`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_director` (`id_director`);
 
@@ -71,18 +71,18 @@ ALTER TABLE `usuarios`
   ADD UNIQUE KEY `email` (`email`);
 
 
-ALTER TABLE `director`
+ALTER TABLE `directores`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
-ALTER TABLE `pelicula`
+ALTER TABLE `peliculas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 ALTER TABLE `usuarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 
-ALTER TABLE `pelicula`
-  ADD CONSTRAINT `fk_director` FOREIGN KEY (`id_director`) REFERENCES `director` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `peliculas`
+  ADD CONSTRAINT `fk_director` FOREIGN KEY (`id_director`) REFERENCES `directores` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 COMMIT;
 
