@@ -26,7 +26,11 @@ switch($params[0]){
     break;
  case 'peliculas':
     $controller= new PeliculaController();
-    $controller->showPeliculas();
+    if(empty($params[1])){
+        $controller->showPeliculas();
+    } else {
+        $controller->showPeliculaByDirector($params[1]);
+    }
     break;
  case 'pelicula':
     $controller= new PeliculaController();
@@ -41,11 +45,12 @@ switch($params[0]){
     $controller->showDirectores();
     break;
  case 'director':
-    $controller= new PeliculaController();
+    $controller= new DirectorController();
+    $controller2= new PeliculaController();
     if(!empty($params[1])&& is_numeric($params[1])){
         $controller->showDirectorById($params[1]);
     }else{
-        $controller->showHome();
+        $controller2->showHome();
     }
     break;
  case 'login':
@@ -94,6 +99,38 @@ switch($params[0]){
     } else {
         $view = new View();
         $view->showError("Película no encontrada");
+    }
+    break;
+ case 'addDirector':
+    $controller = new DirectorController();
+    $controller->addDirector();
+    break;
+ case 'directorForm':
+    $controller = new DirectorController();
+    $controller->showForm();
+    break;
+ case 'editDirector':
+    if (!empty($params[1]) && is_numeric($params[1])) {
+        $controller = new DirectorController();
+        $controller->showForm($params[1]);
+    } else {
+        $view = new View();
+        $view->showError("Director no encontrado");
+    }
+    break;
+ case 'editarDirector':
+    if(!empty($params[1]) && is_numeric($params[1])) {
+        $controller = new DirectorController();
+        $controller->updateDirector(($params[1]));
+    }
+    break;
+ case 'deleteDirector':
+    if(!empty($params[1]) && is_numeric($params[1])) {
+        $controller = new DirectorController();
+        $controller->deleteDirector(($params[1]));
+    } else {
+        $view = new View();
+        $view->showError("Director no encontrado");
     }
     break;
  default:

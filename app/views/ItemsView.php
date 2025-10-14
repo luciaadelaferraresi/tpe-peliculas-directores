@@ -1,6 +1,6 @@
 <?php
 class View {
-    public function ShowPeliculas($peliculas) {
+    public function ShowPeliculas($peliculas, $directores) {
         require './templates/header.phtml';
         require './templates/peliculas.phtml';
         require './templates/footer.phtml';

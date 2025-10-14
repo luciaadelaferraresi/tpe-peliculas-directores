@@ -18,4 +18,11 @@
 <?php endforeach; ?>
 </ul>
 <h1>Directores Destacados</h1>
+<ul>
+<?php foreach($directoresDestacados as $director): ?>
+    <li>
+    <?= $director->nombre ?> - <?= $director->peliculas_count ?>
+    </li>
+<?php endforeach; ?>
+</ul>
 </main>

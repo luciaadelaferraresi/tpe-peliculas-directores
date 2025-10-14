@@ -1,5 +1,6 @@
 <?php
 require_once 'ModelBase.php';
+require_once 'CategoriaModel.php';
 class ListaModel extends modelBase{
    
     public function GetPeliculas() {
@@ -41,6 +42,17 @@ class ListaModel extends modelBase{
 
         return $pelicula;
     }
+    public function GetPeliculasByDirector($id){
+        $query = $this->db->prepare("
+        SELECT p.*, d.nombre AS director 
+        FROM peliculas p 
+        JOIN directores d ON p.id_director = d.id 
+        WHERE p.id_director = ?
+        ");
+        $query->execute([$id]);
+        return $query->fetchALL(PDO::FETCH_OBJ);
+    }
+
     public function InsertPelicula($titulo, $anio, $duracion, $id_director) {
         $query = $this->db->prepare('INSERT INTO peliculas (titulo, anio, duracion, id_director) VALUES (?, ?,?,?)');
         $query->execute([$titulo, $anio, $duracion, $id_director]);

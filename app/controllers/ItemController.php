@@ -1,18 +1,22 @@
 <?php
 require_once __DIR__ . '/../models/ItemModel.php';
+require_once __DIR__ . '/../models/CategoriaModel.php';
 require_once __DIR__ . '/../views/ItemsView.php';
 class PeliculaController{
     private $model;
+    private $modelD;
     private $view;
    
     public function __construct(){
         $this->model= new ListaModel();
+        $this->modelD= new ListaDirModel();
         $this->view= new View();
       
     }
     public function showPeliculas(){
         $peliculas= $this->model->GetPeliculas();
-        $this->view->ShowPeliculas($peliculas);
+        $directores= $this->modelD->GetDirectores();
+        $this->view->ShowPeliculas($peliculas, $directores);
     }
     public function showHome(){
         $destacadas = $this->model->GetPeliculasDestacadas(); 
@@ -27,6 +31,13 @@ class PeliculaController{
         }
       
     }
+    public function showPeliculaByDirector($id){
+        $peliculas = $this->model->GetPeliculasByDirector($id);
+        $directores = $this->modelD->GetDirectores();
+        return $this->view->showPeliculas($peliculas,$directores);
+
+    }
+
     public function addPelicula(){
       
         if (!isset($_POST['titulo']) || empty($_POST['titulo'])) {

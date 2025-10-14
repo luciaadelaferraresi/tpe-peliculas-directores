@@ -1,0 +1,12 @@
+<div class="container-login">
+    <h2><?= !empty($director) ? 'Editar Director' : 'Agregar Director' ?></h2>
+
+    <form method='post' action="<?= !empty($director) ? BASE_URL.'editarDirector/'.$director->id : BASE_URL.'addDirector' ?>">
+        <div class='form-group'>
+            <label for='nombre'>Nombre</label>
+            <input type='text' id='nombre' name='nombre' value="<?= !empty($director) ? $director->nombre : '' ?>" required>
+        </div>
+        
+        <button type="submit" class="btn-login"><?= !empty($director) ? 'Actualizar Director' : 'Agregar Director' ?></button>
+    </form>
+</div>
