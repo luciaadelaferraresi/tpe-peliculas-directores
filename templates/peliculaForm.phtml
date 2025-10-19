@@ -1,26 +1,64 @@
-<div class="container-login">
-<h2><?= !empty($pelicula) ? 'Editar Película' : 'Agregar Película' ?></h2>
+<main class="form-page">
+    <div class="form-container panel">
+        <h2 class="form-title">
+            <?= !empty($pelicula) ? 'Editar Película' : 'Agregar Película' ?>
+        </h2>
 
-<form method='post' action="<?= $pelicula ? BASE_URL.'editarPelicula/'.$pelicula->id : BASE_URL.'addPelicula' ?>">
-    <div class='form-group'>
-        <label for='email'>Titulo</label>
-        <input type='text' id='titulo' name='titulo' value="<?= !empty($pelicula) ? $pelicula->titulo : '' ?>" required>
+        <p class="form-subtitle">
+            <?= !empty($pelicula)
+                ? 'Modifique los datos de la película seleccionada.'
+                : 'Complete los datos para registrar una nueva película en el sistema.' ?>
+        </p>
+
+        <form method="post" action="<?= !empty($pelicula) ? BASE_URL . 'updatePelicula/' . $pelicula->id : BASE_URL . 'addPelicula' ?>">
+
+            <div class="form-group">
+                <label for="titulo">Título</label>
+                <input
+                    type="text"
+                    id="titulo"
+                    name="titulo"
+                    value="<?= htmlspecialchars($pelicula->titulo ?? '') ?>"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="anio">Año</label>
+                <input
+                    type="number"
+                    id="anio"
+                    name="anio"
+                    value="<?= htmlspecialchars($pelicula->anio ?? '') ?>"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="duracion">Duración (min)</label>
+                <input
+                    type="number"
+                    id="duracion"
+                    name="duracion"
+                    value="<?= htmlspecialchars($pelicula->duracion ?? '') ?>"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="director">Director</label>
+                <select id="director" name="director" required>
+                    <option value="">Selecciona un director</option>
+                    <?php foreach ($directores as $director): ?>
+                        <option value="<?= $director->id ?>"
+                            <?= (!empty($pelicula) && $pelicula->id_director == $director->id) ? 'selected' : '' ?>>
+                            <?= htmlspecialchars($director->nombre) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-large">
+                <?= !empty($pelicula) ? 'Actualizar Película' : 'Agregar Película' ?>
+            </button>
+
+        </form>
     </div>
-    <div class='form-group'>
-        <label for='anio'>Año</label>
-        <input type='number' id='anio' name='anio'  value="<?= !empty($pelicula) ? $pelicula->anio : '' ?>" required>
-    </div>
-    <div class='form-group'>
-        <label for='anio'>Duracion</label>
-        <input type='number' id='duracion' name='duracion'  value="<?= !empty($pelicula) ? $pelicula->duracion : '' ?>" required>
-    </div>
-    <div class='form-group'>
-        <label for='link'>Trailer</label>
-        <input type='text' id='link' name='link'  value="<?= !empty($pelicula) ? $pelicula->link : '' ?>" required>
-    </div>
-    <input type="hidden" name="director" value="1">
-   
-    <button type="submit"class="btn-login"><?= !empty($pelicula) ? 'Actualizar Película' : 'Agregar Película' ?></button>
-   
-</form>
-</div>
+</main>

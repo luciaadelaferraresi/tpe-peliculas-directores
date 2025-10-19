@@ -12,16 +12,18 @@ USE `cine`;
 
 CREATE TABLE IF NOT EXISTS `directores` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL
+  `nombre` varchar(100) NOT NULL,
+  `nacionalidad` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
-INSERT INTO `directores` (`id`, `nombre`) VALUES
-(1, 'Steven Spielberg'),
-(2, 'Christopher Nolan'),
-(3, 'Quentin Tarantino'),
-(4, 'Martin Scorsese'),
-(5, 'James Cameron');
+INSERT INTO `directores` (`id`, `nombre`, `nacionalidad`) VALUES
+(1, 'Steven Spielberg', 'Estados Unidos'),
+(2, 'Christopher Nolan', 'Reino Unido'),
+(3, 'Quentin Tarantino', 'Estados Unidos'),
+(4, 'Martin Scorsese', 'Estados Unidos'),
+(5, 'James Cameron', 'Canadá');
+
 
 
 CREATE TABLE IF NOT EXISTS `peliculas` (

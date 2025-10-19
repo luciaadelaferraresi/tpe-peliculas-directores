@@ -1,28 +1,37 @@
 <main class="container">
-    <?php if(!empty($_SESSION['EMAIL_USER'])): ?>   
-<div class="admin-info">
-        <h2>Panel de Administración</h2>
-        <p>Desde aquí podés gestionar el contenido del sitio:</p>
-        <div class="admin-links">
-            <a href="<?= BASE_URL ?>peliculas" class="btn-admin">Administrar Películas</a>
-            <a href="<?= BASE_URL ?>directores" class="btn-admin">Administrar Directores</a>
+    <?php if (!empty($_SESSION['EMAIL_USER'])): ?>
+        <div class="admin-info">
+            <h2>Panel de Administración</h2>
+            <p>Desde aquí podés gestionar el contenido del sitio:</p>
+            <div class="admin-links">
+                <a href="<?= BASE_URL ?>peliculas" class="btn btn-primary btn-small">Administrar Películas</a>
+                <a href="<?= BASE_URL ?>directores" class="btn btn-primary btn-small">Administrar Directores</a>
+            </div>
         </div>
-</div>
-  <?php endif; ?>
+    <?php endif; ?>
+    <div class="section">
         <h1>Películas Destacadas</h1>
-        <ul>
-<?php foreach($peliculasDestacadas as $pelicula): ?>
-    <li>
-    <?= $pelicula->titulo ?> - <?= $pelicula->anio ?> - <?=$pelicula->director?>
-    </li>
-<?php endforeach; ?>
-</ul>
-<h1>Directores Destacados</h1>
-<ul>
-<?php foreach($directoresDestacados as $director): ?>
-    <li>
-    <?= $director->nombre ?> - <?= $director->peliculas_count ?>
-    </li>
-<?php endforeach; ?>
-</ul>
+        <ul class="card-list">
+            <?php foreach ($peliculas as $pelicula): ?>
+                <li class="card panel">
+                    <h3><?= htmlspecialchars($pelicula->titulo) ?></h3>
+                    <p><strong>Año:</strong> <?= htmlspecialchars($pelicula->anio) ?></p>
+                    <p><strong>Director:</strong> <?= htmlspecialchars($pelicula->director) ?></p>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h1>Directores Destacados</h1>
+        <ul class="card-list">
+            <?php foreach ($directores as $director): ?>
+                <li class="card panel">
+                    <h3><?= htmlspecialchars($director->nombre) ?></h3>
+                    <p><strong>Nacionalidad: </strong><?= htmlspecialchars($director->nacionalidad) ?></p>
+                    <p><strong>Películas dirigidas:</strong> <?= (int)$director->peliculas_count ?></p>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
 </main>

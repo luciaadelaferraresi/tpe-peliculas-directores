@@ -1,12 +1,11 @@
-<main class="container">
-    <h1><?=$pelicula->titulo?></h1>
-    <p>año: <?=$pelicula->anio?></p>
-    <p>Duracion: <?=$pelicula->duracion?><p>
-    <p>Director: <?=$pelicula->director?><p>
-        <div class="d-flex justify-content-center col-12 mt-4">
-            <iframe width="100%" height="360" src="https://www.youtube.com/watch?v=dLDkNge_AhE"
-                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-    <a href="<?= BASE_URL ?>peliculas">Volver atras</a>    
+<main class="container detalle-container">
+    <div class="detalle-card panel">
+        <h1 class="detalle-titulo"><?= htmlspecialchars($pelicula->titulo) ?></h1>
+        <ul class="detalle-info">
+            <li><strong>Año:</strong> <?= htmlspecialchars($pelicula->anio) ?></li>
+            <li><strong>Duración:</strong> <?= htmlspecialchars($pelicula->duracion) ?> min</li>
+            <li><strong>Director:</strong> <?= htmlspecialchars($pelicula->director) ?></li>
+        </ul>
+        <a href="<?= BASE_URL ?>peliculas" class="btn btn-primary btn-small">← Volver atrás</a>
+    </div>
 </main>

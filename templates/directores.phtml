@@ -1,34 +1,39 @@
 <main class="container">
-    <h1>Directores</h1>
-
-    <?php if(!empty($_SESSION['EMAIL_USER'])): ?>
-        <div class="btn-container">
-            <a href="<?= BASE_URL ?>directorForm" class="btn-admin">Agregar Director</a>
+    <div class="section">
+        <div class="section-header">
+            <h1>Directores</h1>
+            <?php if (!empty($_SESSION['EMAIL_USER'])): ?>
+                <a href="<?= BASE_URL ?>directorForm" class="btn btn-small btn-primary">+ Agregar Director</a>
+            <?php endif; ?>
         </div>
-    <?php endif; ?>
 
-    <table class="tabla-peliculas">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Peliculas que dirigio</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach($directores as $director): ?>
-                <tr>
-                    <td><?= $director->nombre ?></td>
-                    <td><?= $director->peliculas_count ?></td>
-                    <td>
-                        <a href="<?= BASE_URL ?>director/<?= $director->id ?>" class="btn-view">Ver detalle</a>
-                        <?php if(!empty($_SESSION['EMAIL_USER'])): ?>
-                            <a href="<?= BASE_URL ?>editDirector/<?= $director->id ?>" class="btn-edit">Editar</a>
-                            <a href="<?= BASE_URL ?>deleteDirector/<?= $director->id ?>" class="btn-delete">Eliminar</a>
-                        <?php endif; ?>                        
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+        <div class="section">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Nacionalidad</th>
+                        <th>Peliculas dirigidas</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($directores as $director): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($director->nombre) ?></td>
+                            <td><?= htmlspecialchars($director->nacionalidad) ?></td>
+                            <td><?= htmlspecialchars($director->peliculas_count) ?></td>
+                            <td>
+                                <a href="<?= BASE_URL ?>director/<?= $director->id ?>" class="btn btn-small btn-view">Ver</a>
+                                <?php if (!empty($_SESSION['EMAIL_USER'])): ?>
+                                    <a href="<?= BASE_URL ?>editDirector/<?= $director->id ?>" class="btn btn-small btn-primary">Editar</a>
+                                    <a href="<?= BASE_URL ?>deleteDirector/<?= $director->id ?>" class="btn btn-small btn-delete">Eliminar</a>
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </main>

@@ -1,3 +1,26 @@
-<main class="container">
-    <h1><?=$director->nombre?></h1>
+<main class="container detalle-container">
+    <div class="detalle-card panel">
+        <h1 class="detalle-titulo"><?= $director->nombre ?></h1>
+        <ul class="detalle-info">
+            <li><strong>Nacionalidad:</strong> <?= $director->nacionalidad ?? 'Desconocida' ?></li>
+            <li><strong>Películas dirigidas:</strong> <?= $director->peliculas_count ?? 0 ?></li>
+        </ul>
+        <?php if (!empty($director->peliculas)): ?>
+            <h3>Películas dirigidas:</h3>
+            <ul class="detalle-info">
+                <?php foreach ($director->peliculas as $pelicula): ?>
+                    <li>
+                        <strong><?= htmlspecialchars($pelicula->titulo) ?></strong>
+                        (<?= htmlspecialchars($pelicula->anio) ?>, <?= htmlspecialchars($pelicula->duracion) ?> min)
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        <?php else: ?>
+            <p><em>No hay películas registradas para este director.</em></p>
+        <?php endif; ?>
+
+
+
+        <a href="<?= BASE_URL ?>directores" class="btn btn-primary btn-small">← Volver atrás</a>
+    </div>
 </main>

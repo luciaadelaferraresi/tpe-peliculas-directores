@@ -1,48 +1,55 @@
 <main class="container">
-    <h1>Películas</h1>
-
-    <?php if(!empty($_SESSION['EMAIL_USER'])): ?>
-        <div class="btn-container">
-            <a href="<?= BASE_URL ?>peliculaForm" class="btn-admin">Agregar Película</a>  
+    <div class="section">
+        <div class="section-header">
+            <h1>Películas</h1>
+            <?php if (!empty($_SESSION['EMAIL_USER'])): ?>
+                <a href="<?= BASE_URL ?>peliculaForm" class="btn btn-primary btn-small">+ Agregar Película</a>
+            <?php endif; ?>
         </div>
-      
-    <?php endif; ?>
 
-    <div>
-        <h3>Directores</h3>
-        <ul>
-            <li><a href="<?= BASE_URL ?>peliculas/">Todos los Directores</a></li>
-            <?php foreach ($directores as $director): ?>
-                <li><a href="<?= BASE_URL ?>peliculas/<?php echo $director->id ?>"><?php echo $director->nombre ?></a></li>
-            <?php endforeach ?>
-        </ul>
+        <!-- Filtros -->
+        <section class="filters section">
+            <h3>Filtrar por Director</h3>
+            <ul class="filter-list">
+                <li><a href="<?= BASE_URL ?>peliculas" class="filter-btn">Todos</a></li>
+                <?php foreach ($directores as $director): ?>
+                    <li>
+                        <a href="<?= BASE_URL ?>peliculas/<?= $director->id ?>" class="filter-btn">
+                            <?= htmlspecialchars($director->nombre) ?>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </section>
+
+        <!-- Tabla de películas -->
+        <div class="section">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Año</th>
+                        <th>Director</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($peliculas as $pelicula): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($pelicula->titulo) ?></td>
+                            <td><?= htmlspecialchars($pelicula->anio) ?></td>
+                            <td><?= htmlspecialchars($pelicula->director) ?></td>
+                            <td class="btn-container">
+                                <a href="<?= BASE_URL ?>pelicula/<?= $pelicula->id ?>" class="btn btn-view btn-small">Ver</a>
+                                <?php if (!empty($_SESSION['EMAIL_USER'])): ?>
+                                    <a href="<?= BASE_URL ?>editPelicula/<?= $pelicula->id ?>" class="btn btn-primary btn-small">Editar</a>
+                                    <a href="<?= BASE_URL ?>deletePelicula/<?= $pelicula->id ?>" class="btn btn-delete btn-small">Eliminar</a>
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
     </div>
-    
-    <table class="tabla-peliculas">
-        <thead>
-            <tr>
-                <th>Título</th>
-                <th>Año</th>
-                <th>Director</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach($peliculas as $pelicula): ?>
-                <tr>
-                    <td><?= $pelicula->titulo ?></td>
-                    <td><?= $pelicula->anio ?></td>
-                    <td><?= $pelicula->director ?></td>
-                    <td>
-                        <a href="<?= BASE_URL ?>pelicula/<?= $pelicula->id ?>" class="btn-view">Ver detalle</a>
-
-                        <?php if(!empty($_SESSION['EMAIL_USER'])): ?>
-                            <a href="<?= BASE_URL ?>editPelicula/<?= $pelicula->id ?>" class="btn-edit">Editar</a>
-                            <a href="<?= BASE_URL ?>deletePelicula/<?= $pelicula->id ?>" class="btn-delete">Eliminar</a>
-                        <?php endif; ?>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
 </main>
