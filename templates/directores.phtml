@@ -23,7 +23,7 @@
                             <td><?= htmlspecialchars($director->nombre) ?></td>
                             <td><?= htmlspecialchars($director->nacionalidad) ?></td>
                             <td><?= htmlspecialchars($director->peliculas_count) ?></td>
-                            <td>
+                            <td class="btn-container">
                                 <a href="<?= BASE_URL ?>director/<?= $director->id ?>" class="btn btn-small btn-view">Ver</a>
                                 <?php if (!empty($_SESSION['EMAIL_USER'])): ?>
                                     <a href="<?= BASE_URL ?>editDirector/<?= $director->id ?>" class="btn btn-small btn-primary">Editar</a>
