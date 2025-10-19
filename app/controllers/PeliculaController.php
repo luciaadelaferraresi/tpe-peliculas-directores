@@ -3,6 +3,7 @@ require_once __DIR__ . '/../models/PeliculaModel.php';
 require_once __DIR__ . '/../models/DirectorModel.php';
 require_once __DIR__ . '/../views/PeliculaView.php';
 require_once __DIR__ . '/../views/view.php';
+require_once __DIR__ . '/../controllers/errorController.php';
 class PeliculaController
 {
     private $model;
@@ -15,7 +16,7 @@ class PeliculaController
         $this->model = new PeliculaModel();
         $this->modelD = new DirectorModel();
         $this->view = new PeliculaView();
-        $this->errorView = new View();
+        $this->errorView = new errorController();
     }
     private function checkLogin()
     {
@@ -23,7 +24,7 @@ class PeliculaController
             session_start();
         }
         if (empty($_SESSION['EMAIL_USER'])) {
-            $this->errorView->showError("No tenés permisos para realizar esta acción.");
+            $this->errorView->showPermissionError();
             exit();
         }
     }

@@ -5,16 +5,15 @@ error_reporting(E_ALL);
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-
+require_once "config.php";
 require_once "app/controllers/AuthController.php";
 require_once "app/controllers/DirectorController.php";
 require_once "app/controllers/PeliculaController.php";
 require_once "app/controllers/HomeController.php";
-require_once "app/views/view.php";
-require_once "config.php";
+require_once "app/controllers/errorController.php";
 
 
-$action = 'home';
+
 $action = !empty($_GET['action']) ? $_GET['action'] : 'home';
 
 
@@ -82,8 +81,8 @@ switch ($params[0]) {
             $controller = new PeliculaController();
             $controller->showForm($params[1]);
         } else {
-            $view = new View();
-            $view->showError("Película no encontrada");
+            $controller = new ErrorController();
+            $controller->showError("Película no encontrada");
         }
         break;
     case 'updatePelicula':
@@ -97,8 +96,8 @@ switch ($params[0]) {
             $controller = new PeliculaController();
             $controller->deletePelicula($params[1]);
         } else {
-            $view = new View();
-            $view->showError("Película no encontrada");
+            $controller = new ErrorController();
+            $controller->showError("Película no encontrada");
         }
         break;
     case 'addDirector':
@@ -114,8 +113,8 @@ switch ($params[0]) {
             $controller = new DirectorController();
             $controller->showForm($params[1]);
         } else {
-            $view = new View();
-            $view->showError("Director no encontrado");
+            $controller = new ErrorController();
+            $controller->showError("Director no encontrado");
         }
         break;
     case 'updateDirector':
@@ -129,12 +128,12 @@ switch ($params[0]) {
             $controller = new DirectorController();
             $controller->deleteDirector(($params[1]));
         } else {
-            $view = new View();
-            $view->showError("Director no encontrado");
+            $controller = new ErrorController();
+            $controller->showError("Director no encontrado");
         }
         break;
     default:
-        $view = new View();
-        $view->showError("Error 404 - Página no encontrada");
+        $controller = new ErrorController();
+        $controller->show404();
         break;
 }

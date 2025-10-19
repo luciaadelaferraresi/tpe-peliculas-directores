@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../models/DirectorModel.php';
 require_once __DIR__ . '/../views/DirectorView.php';
+require_once __DIR__ . '/../controllers/errorController.php';
 class DirectorController
 {
     private $model;
@@ -11,8 +12,19 @@ class DirectorController
     {
         $this->model = new DirectorModel();
         $this->view = new DirectorView();
-        $this->errorView = new View();
+        $this->errorView = new errorController();
     }
+    private function checkLogin()
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+        if (empty($_SESSION['EMAIL_USER'])) {
+            $this->errorView->showPermissionError();
+            exit();
+        }
+    }
+    
 
     public function showDirectores()
     {
@@ -32,6 +44,7 @@ class DirectorController
 
     public function addDirector()
     {
+        $this->checkLogin();
         if (!isset($_POST['nombre']) || empty($_POST['nombre'])) {
             return $this->errorView->showError('Falta completar el titulo');
         }
@@ -50,6 +63,7 @@ class DirectorController
 
     public function showForm($id = null)
     {
+        $this->checkLogin();
         $director = null;
         if ($id) {
             $director = $this->model->GetDirector($id);
@@ -59,6 +73,7 @@ class DirectorController
 
     public function updateDirector($id)
     {
+        $this->checkLogin();
         $nombre = $_POST['nombre'];
         $nacionalidad = $_POST['nacionalidad'];
 
@@ -70,6 +85,7 @@ class DirectorController
 
     public function deleteDirector($id)
     {
+        $this->checkLogin();
         $this->model->deleteDirector($id);
         header("Location: " . BASE_URL . "directores");
         exit();
