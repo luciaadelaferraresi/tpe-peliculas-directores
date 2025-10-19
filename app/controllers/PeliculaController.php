@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../models/PeliculaModel.php';
 require_once __DIR__ . '/../models/DirectorModel.php';
 require_once __DIR__ . '/../views/PeliculaView.php';
-require_once __DIR__ . '/../views/View.php';
+require_once __DIR__ . '/../views/view.php';
 class PeliculaController
 {
     private $model;

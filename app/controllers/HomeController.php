@@ -20,7 +20,7 @@ class HomeController
 
     public function showHome()
     {
-        // Obtener datos directamente desde los modelos
+        
         $peliculas = $this->peliculaModel->getPeliculasDestacadas();
         $directores = $this->directorModel->getDirectoresDestacados();
         $this->destacadosView->ShowDestacados($peliculas, $directores);
