@@ -1,0 +1,38 @@
+<main class="container">
+    <h1>Películas</h1>
+
+    <?php if(!empty($_SESSION['EMAIL_USER'])): ?>
+        <div class="btn-container">
+            <a href="<?= BASE_URL ?>peliculaForm" class="btn-admin">Agregar Película</a>  
+        </div>
+      
+    <?php endif; ?>
+
+    <table class="tabla-peliculas">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Año</th>
+                <th>Director</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($peliculas as $pelicula): ?>
+                <tr>
+                    <td><?= $pelicula->titulo ?></td>
+                    <td><?= $pelicula->anio ?></td>
+                    <td><?= $pelicula->director ?></td>
+                    <td>
+                        <a href="<?= BASE_URL ?>pelicula/<?= $pelicula->id ?>" class="btn-view">Ver detalle</a>
+
+                        <?php if(!empty($_SESSION['EMAIL_USER'])): ?>
+                            <a href="<?= BASE_URL ?>editPelicula/<?= $pelicula->id ?>" class="btn-edit">Editar</a>
+                            <a href="<?= BASE_URL ?>deletePelicula/<?= $pelicula->id ?>" class="btn-delete">Eliminar</a>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</main>

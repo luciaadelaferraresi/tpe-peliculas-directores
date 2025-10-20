@@ -1,0 +1,208 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #222;
+    padding: 10px 20px;
+}
+
+.navbar .logo a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-links li a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    padding: 20px;
+}
+
+.footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container-login {
+    max-width: 400px;
+    margin: 80px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.container-login h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 12px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-login:hover {
+    background-color: #0056b3;
+}
+
+.error-message {
+    color: red;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.alert {
+    text-align: center;
+}
+
+#logout-link {
+    color: rgb(232, 68, 68);     
+    font-weight: bold; 
+}
+.tabla-peliculas {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.tabla-peliculas th, .tabla-peliculas td {
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.tabla-peliculas th {
+    background-color: #f4f4f4;
+}
+
+.tabla-peliculas tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.btn-admin, .btn-edit, .btn-delete, .btn-view {
+    padding: 8px 10px;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+    margin-right: 5px;
+    font-size: 0.85em;
+    transition: 0.3s;
+}
+
+.btn-admin, .btn-edit {
+    background-color: #007BFF;
+}
+
+.btn-admin:hover, .btn-edit:hover {
+    background-color: #0056b3;
+}
+
+.btn-delete {
+    background-color: #e44;
+}
+
+.btn-delete:hover {
+    background-color: #c33;
+}
+
+.btn-view {
+    background-color: #28a745;
+}
+
+.btn-view:hover {
+    background-color: #1e7e34;
+}
+.btn-container{
+    margin-bottom: 20px;
+}
+.admin-info {
+    background-color: #f9f9f9;
+    border-top: 2px solid #007BFF;
+    border-bottom: 2px solid #007BFF;
+    padding: 40px 20px;
+    width: 100%;
+    text-align: center;
+    border-radius: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.admin-info h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.admin-info p {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.admin-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+

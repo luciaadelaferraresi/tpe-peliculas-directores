@@ -1,0 +1,21 @@
+<main class="container">
+    <?php if(!empty($_SESSION['EMAIL_USER'])): ?>   
+<div class="admin-info">
+        <h2>Panel de Administración</h2>
+        <p>Desde aquí podés gestionar el contenido del sitio:</p>
+        <div class="admin-links">
+            <a href="<?= BASE_URL ?>peliculas" class="btn-admin">Administrar Películas</a>
+            <a href="<?= BASE_URL ?>directores" class="btn-admin">Administrar Directores</a>
+        </div>
+</div>
+  <?php endif; ?>
+        <h1>Películas Destacadas</h1>
+        <ul>
+<?php foreach($peliculasDestacadas as $pelicula): ?>
+    <li>
+    <?= $pelicula->titulo ?> - <?= $pelicula->anio ?> - <?=$pelicula->director?>
+    </li>
+<?php endforeach; ?>
+</ul>
+<h1>Directores Destacados</h1>
+</main>

@@ -1,0 +1,17 @@
+<div class="container-login">
+    <h2>Iniciar Sesión</h2>
+    <?php if (!empty($error)): ?>
+        <div class="alert alert-danger"><?= $error ?></div>
+    <?php endif; ?>
+    <form method="post" action="verify">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" placeholder="tu@email.com" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" name="password" placeholder="********" required>
+        </div>
+        <button type="submit" class="btn-login">Ingresar</button>
+    </form>
+</div>

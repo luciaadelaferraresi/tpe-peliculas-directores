@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="<?= BASE_URL ?>css/style.css">
+</head>
+<body>
+    <header>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="home">Películas TPE</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="<?= BASE_URL ?>home">Home</a></li>
+            <li><a href="<?= BASE_URL ?>peliculas">Películas</a></li>
+            <li><a href="<?= BASE_URL ?>directores">Directores</a></li>
+            <?php if (!empty($_SESSION['EMAIL_USER'])): ?>
+        <li><a href="<?= BASE_URL ?>logout" id="logout-link">Logout </a></li>
+    <?php else: ?>
+        <li><a href="<?= BASE_URL ?>login">Login</a></li>
+    <?php endif; ?>
+        </ul>
+    </nav>
+</header>

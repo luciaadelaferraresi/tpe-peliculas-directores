@@ -1,0 +1,11 @@
+<main class="container">
+    <h1>Directores</h1>
+    <ul>
+        <?php foreach($directores as $director): ?>
+            <li>
+                <?= $director->nombre ?> |
+                Películas: <?= $director->peliculas_count ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</main>
