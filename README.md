@@ -23,12 +23,12 @@ El archivo SQL exportado se encuentra en [database.sql](database.sql) y crea las
 - La relación es de 1 a N, cada película tiene un director.
 
 ## Instalacion / Importar la DB
-1- Cloná este repositorio: https://github.com/luciaadelaferraresi/tpe-peliculas-directores
-2- Editá config.php (en la raíz) para que coincida con tu entorno local
-3- El sistema accede a la base de datos utilizando las constantes definidas en config.php.
-4- Si la base de datos no existe, se creará automáticamente y se cargará con datos iniciales definidos en database.sql
-5- Iniciá Apache y MySQL desde XAMPP.
-6- Abrí el navegador y accedé a la carpeta del proyecto, por ejemplo: http://localhost/nombre-de-tu-carpeta/
+1. Cloná este repositorio: https://github.com/luciaadelaferraresi/tpe-peliculas-directores
+2. Editá config.php (en la raíz) para que coincida con tu entorno local
+3. El sistema accede a la base de datos utilizando las constantes definidas en config.php.
+4. Si la base de datos no existe, se creará automáticamente y se cargará con datos iniciales definidos en database.sql
+5. Iniciá Apache y MySQL desde XAMPP.
+6. Abrí el navegador y accedé a la carpeta del proyecto, por ejemplo: http://localhost/nombre-de-tu-carpeta/
 
 # usuario administrador:
 Podes iniciar sesión con las siguientes credenciales:
