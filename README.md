@@ -16,7 +16,7 @@ Se incluye el archivo [Diagrama Entidad-Relacion](DER.jpeg) que representa las e
 - Una película pertenece a un solo director.
 
 ## SQL
-El archivo SQL exportado se encuentra en [cine.sql](database.sql) y crea las tablas:
+El archivo SQL exportado se encuentra en [database.sql](database.sql) y crea las tablas:
 - `Película`  
 - `Director`
 - `Usuario`
