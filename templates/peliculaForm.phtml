@@ -42,6 +42,11 @@
                 </select>
             </div>
 
+            <div class='form-group'>
+                <label for='portada'>Portada</label>
+                <input type='text' id='portada' name='portada'  value="<?= !empty($pelicula) ? $pelicula->portada : '' ?>" required>
+            </div>
+
             <button type="submit" class="btn btn-primary btn-large">
                 <?= !empty($pelicula) ? 'Actualizar Película' : 'Agregar Película' ?>
             </button>

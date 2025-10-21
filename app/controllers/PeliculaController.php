@@ -94,7 +94,8 @@ class PeliculaController
         empty($_POST['titulo']) ||
         empty($_POST['anio']) ||
         empty($_POST['duracion']) ||
-        empty($_POST['director'])
+        empty($_POST['director']) ||
+        empty($_POST['portada'])
     ) {
         return $this->errorView->showError("Faltan datos para actualizar la película");
     }
@@ -102,8 +103,9 @@ class PeliculaController
         $anio = $_POST['anio'];
          $duracion = $_POST['duracion'];
          $id_director = $_POST['director'];
+         $portada = $_POST['portada'];
 
-        $this->model->updatePelicula($id, $titulo, $anio,$duracion,$id_director);
+        $this->model->updatePelicula($id, $titulo, $anio,$duracion,$portada,$id_director);
         header("Location: " . BASE_URL . "peliculas");
         exit();
     }

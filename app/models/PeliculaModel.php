@@ -64,14 +64,14 @@ class PeliculaModel extends modelBase
         $query = $this->db->prepare('INSERT INTO peliculas (titulo, anio, duracion, id_director) VALUES (?, ?,?,?)');
         $query->execute([$titulo, $anio, $duracion, $id_director]);
     }
-    public function updatePelicula($id, $titulo, $anio, $duracion, $id_director)
+    public function updatePelicula($id, $titulo, $anio, $duracion, $portada, $id_director)
     {
         $query = $this->db->prepare('
         UPDATE peliculas 
-        SET titulo = ?, anio = ?, duracion = ?, id_director = ? 
+        SET titulo = ?, anio = ?, duracion = ?, portada = ?, id_director = ? 
         WHERE id = ?
     ');
-        $query->execute([$titulo, $anio, $duracion, $id_director, $id]);
+        $query->execute([$titulo, $anio, $duracion, $portada, $id_director, $id]);
     }
     public function deletePelicula($id)
     {

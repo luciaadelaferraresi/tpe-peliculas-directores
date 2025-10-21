@@ -291,6 +291,12 @@ body {
     margin-bottom: 8px;
 }
 
+.detalle-portada img {
+    width: 18.75rem;
+    height: 25rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+}
 
 .btn {
     display: inline-block;
