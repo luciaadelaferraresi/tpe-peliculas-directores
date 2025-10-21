@@ -64,6 +64,9 @@ class PeliculaController
         if (!isset($_POST['duracion']) || empty($_POST['duracion'])) {
             return $this->errorView->showError('Falta completar la duracion');
         }
+        if (!isset($_POST['portada']) || empty($_POST['portada'])) {
+            return $this->errorView->showError('Falta completar la portada');
+        }
 
 
 
@@ -71,9 +74,9 @@ class PeliculaController
         $anio = $_POST['anio'];
         $duracion = $_POST['duracion'];
         $id_director = $_POST['director'] ?? 1;
+        $portada = $_POST['portada'];
 
-
-        $this->model->InsertPelicula($titulo, $anio, $duracion, $id_director);
+        $this->model->InsertPelicula($titulo, $anio, $duracion,$portada ,$id_director);
         header("Location: " . BASE_URL . "peliculas");
         exit();
     }

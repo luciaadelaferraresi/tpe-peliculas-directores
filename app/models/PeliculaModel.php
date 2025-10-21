@@ -7,10 +7,10 @@ class PeliculaModel extends modelBase
     public function GetPeliculas()
     {
         $query = $this->db->prepare("
-        SELECT p.id, p.titulo, p.anio, d.nombre AS director
+        SELECT p.id, p.titulo, p.anio, p.duracion, p.portada, d.nombre AS director
         FROM peliculas p
         JOIN directores d ON p.id_director = d.id
-         ORDER BY p.id DESC
+        ORDER BY p.id DESC
          ");
         $query->execute();
 
@@ -59,10 +59,13 @@ class PeliculaModel extends modelBase
         return $query->fetchALL(PDO::FETCH_OBJ);
     }
 
-    public function InsertPelicula($titulo, $anio, $duracion, $id_director)
+    public function InsertPelicula($titulo, $anio, $duracion, $portada, $id_director)
     {
-        $query = $this->db->prepare('INSERT INTO peliculas (titulo, anio, duracion, id_director) VALUES (?, ?,?,?)');
-        $query->execute([$titulo, $anio, $duracion, $id_director]);
+        $query = $this->db->prepare('
+            INSERT INTO peliculas (titulo, anio, duracion, portada, id_director)
+            VALUES (?, ?, ?, ?, ?)
+        ');
+        $query->execute([$titulo, $anio, $duracion, $portada, $id_director]);
     }
     public function updatePelicula($id, $titulo, $anio, $duracion, $portada, $id_director)
     {

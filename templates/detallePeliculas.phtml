@@ -7,8 +7,9 @@
             <li><strong>Director:</strong> <?= htmlspecialchars($pelicula->director) ?></li>
         </ul>
         <div class="detalle-portada">
-            <img src="<?= $pelicula->portada ?>">
-        </div>
+    <img src="<?= htmlspecialchars($pelicula->portada) ?>" 
+         alt="Portada de <?= htmlspecialchars($pelicula->titulo) ?>">
+</div>
         <a href="<?= BASE_URL ?>peliculas" class="btn btn-primary btn-small">← Volver atrás</a>
     </div>
 </main>
